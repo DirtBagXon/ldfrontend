@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="actionmax">
+    <file preprocess="xml-stripblanks">actionmax.glade</file>
+    <file>images/38ambushalley.png</file>
+    <file>images/bluethunder.png</file>
+    <file>images/hydrosub2021.png</file>
+    <file>images/popsghostly.png</file>
+    <file>images/sonicfury.png</file>
+  </gresource>
+</gresources>
+

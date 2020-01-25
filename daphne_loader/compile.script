@@ -1,0 +1,7 @@
+#!/bin/bash
+
+rm -f daphneloader
+
+glib-compile-resources --target=daphneResource.c --generate-source resource.xml
+
+gcc -o daphneloader daphne.c daphneResource.c -lm `pkg-config --cflags --libs gtk+-3.0` -export-dynamic

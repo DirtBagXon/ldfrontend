@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="daphne">
+    <file preprocess="xml-stripblanks">daphne.glade</file>
+    <file>images/ace.jpg</file>
+    <file>images/astron.jpg</file>
+    <file>images/badlands.jpg</file>
+    <file>images/bega.jpg</file>
+    <file>images/blazer.jpg</file>
+    <file>images/cliff.jpg</file>
+    <file>images/cobra.jpg</file>
+    <file>images/esh.jpg</file>
+    <file>images/galaxy.jpg</file>
+    <file>images/gpworld.jpg</file>
+    <file>images/interstellar.jpg</file>
+    <file>images/lair.jpg</file>
+    <file>images/lair2.jpg</file>
+    <file>images/mach3.jpg</file>
+    <file>images/roadblaster.jpg</file>
+    <file>images/sdq.jpg</file>
+    <file>images/tq.jpg</file>
+    <file>images/tq_keyboard.jpg</file>
+    <file>images/uvt.jpg</file>
+    <file>images/logo.jpg</file>
+  </gresource>
+</gresources>

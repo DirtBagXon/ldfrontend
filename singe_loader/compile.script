@@ -1,0 +1,7 @@
+#!/bin/bash
+
+rm -f singeloader
+
+glib-compile-resources --target=singeResource.c --generate-source resource.xml
+
+gcc -o singeloader singe.c singeResource.c -lm `pkg-config --cflags --libs gtk+-3.0` -export-dynamic

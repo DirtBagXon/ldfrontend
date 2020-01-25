@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="singe">
+    <file preprocess="xml-stripblanks">singe.glade</file>
+    <file>images/crimepatrol.jpg</file>
+    <file>images/drugwars.jpg</file>
+    <file>images/hayate.jpg</file>
+    <file>images/johnnyrock.jpg</file>
+    <file>images/lbh.jpg</file>
+    <file>images/maddog2.jpg</file>
+    <file>images/maddog.jpg</file>
+    <file>images/platoon.jpg</file>
+    <file>images/spacepirates.jpg</file>
+    <file>images/starblazers.jpg</file>
+    <file>images/timegal.jpg</file>
+    <file>images/timetraveler.jpg</file>
+    <file>images/logo.jpg</file>
+  </gresource>
+</gresources>
+

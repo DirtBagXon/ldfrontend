@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.20.0 -->
+<interface>
+  <requires lib="gtk+" version="3.20"/>
+  <object class="GtkWindow" id="window">
+    <property name="can_focus">False</property>
+    <property name="title" translatable="yes">Linux Daphne Loader</property>
+    <child>
+      <object class="GtkFixed" id="outterfixed">
+        <property name="width_request">469</property>
+        <property name="height_request">268</property>
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <object class="GtkFixed" id="listfixed">
+            <property name="width_request">255</property>
+            <property name="height_request">253</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkScrolledWindow" id="scroll">
+                <property name="width_request">240</property>
+                <property name="height_request">238</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="hscrollbar_policy">never</property>
+                <property name="vscrollbar_policy">always</property>
+                <property name="shadow_type">in</property>
+                <child>
+                  <placeholder/>
+                </child>
+              </object>
+              <packing>
+                <property name="x">8</property>
+                <property name="y">7</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="x">10</property>
+            <property name="y">9</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkOverlay" id="imageoverlay">
+            <property name="width_request">160</property>
+            <property name="height_request">120</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="x">285</property>
+            <property name="y">20</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="start">
+            <property name="label" translatable="yes">Start!</property>
+            <property name="width_request">70</property>
+            <property name="height_request">34</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="on_start_clicked" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">275</property>
+            <property name="y">162</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="fullscreen">
+            <property name="label" translatable="yes">Fullscreen</property>
+            <property name="width_request">95</property>
+            <property name="height_request">25</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+            <signal name="toggled" handler="on_fullscreen_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">359</property>
+            <property name="y">167</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="logobutton">
+            <property name="width_request">178</property>
+            <property name="height_request">56</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">Quit</property>
+            <property name="relief">none</property>
+            <signal name="clicked" handler="on_logobutton_clicked" swapped="no"/>
+            <child>
+              <object class="GtkImage" id="logoimage">
+                <property name="width_request">160</property>
+                <property name="height_request">46</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="resource">/daphne/images/logo.jpg</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">275</property>
+            <property name="y">206</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
