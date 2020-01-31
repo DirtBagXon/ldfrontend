@@ -4,4 +4,4 @@ rm -f actionmaxlauncher
 
 glib-compile-resources --target=actionmaxResource.c --generate-source resource.xml
 
-gcc -o actionmaxlauncher actionmax.c actionmaxResource.c -lm `pkg-config --cflags --libs gtk+-3.0` -export-dynamic
+gcc -o actionmaxlauncher actionmax.c actionmaxResource.c ../common/util.c -lm `pkg-config --cflags --libs gtk+-3.0` -export-dynamic

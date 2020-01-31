@@ -168,7 +168,7 @@
         </child>
         <child>
           <object class="GtkCheckButton" id="fullscreen">
-            <property name="label" translatable="yes">Go Fullscreen</property>
+            <property name="label" translatable="yes">Fullscreen</property>
             <property name="name">fullscreen</property>
             <property name="width_request">103</property>
             <property name="height_request">34</property>

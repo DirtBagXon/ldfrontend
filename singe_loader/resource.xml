@@ -2,6 +2,7 @@
 <gresources>
   <gresource prefix="singe">
     <file preprocess="xml-stripblanks">singe.glade</file>
+    <file>css/main.css</file>
     <file>images/crimepatrol.jpg</file>
     <file>images/drugwars.jpg</file>
     <file>images/hayate.jpg</file>

@@ -29,6 +29,7 @@
 #include <gtk/gtkx.h>
 #include <ctype.h>
 #include <sys/mman.h>
+#include "../common/util.h"
 #include "actionmax.h"
 
 GtkWidget	*window;
@@ -47,29 +48,9 @@ GtkWidget	*sonicfurylaunch;
 GtkWidget	*fullscreen;
 GtkBuilder	*builder;
 
-static void watch_game(GPid pid, gint status, gpointer user_data);
-const char * check_fd(int fd);
 static	GdkWindow* G_WINDOW = 0;
 static	GdkCursor* G_CURSOR = 0;
-void	on_destroy();
 void	run_game(char *GAME);
-void 	display_error(char *ERROR);
-char	fs[16];
-
-const char * check_fd(int fd)
-{
-	char line[1024];
-	char buffer[1024];
-	char *s_ptr = line;
-	ssize_t nbytes = read(fd, buffer, sizeof(buffer));
-
-	if (nbytes <= 0) {
-		return "EOF";
-	} else {
-		sprintf(line, "%.*s\n", (int)nbytes - 1, buffer);
-		return s_ptr;
-	}
-}
 
 void changecursor()
 {
@@ -109,6 +90,19 @@ int main(int argc, char *argv[]) {
 	gtk_window_set_keep_above (GTK_WINDOW(window), FALSE);
 	gtk_window_set_resizable(GTK_WINDOW(window), FALSE);
 	g_signal_connect(window, "realize", G_CALLBACK(WindowRealize), NULL);
+
+	loadResCSS("actionmax/css/main.css");
+	gtk_widget_set_name(quit, "quit_button");
+	gtk_widget_set_name(ambushalleylaunch, "shadow");
+	gtk_widget_set_name(bluethunderlaunch, "shadow");
+	gtk_widget_set_name(hydrosub2021launch, "shadow");
+	gtk_widget_set_name(popsghostlylaunch, "shadow");
+	gtk_widget_set_name(sonicfurylaunch, "shadow");
+	gtk_widget_set_name(ambushalleyimage, "shadow");
+	gtk_widget_set_name(bluethunderimage, "shadow");
+	gtk_widget_set_name(hydrosub2021image, "shadow");
+	gtk_widget_set_name(popsghostlyimage, "shadow");
+	gtk_widget_set_name(sonicfuryimage, "shadow");
 
 	gtk_widget_show(window);
 	changecursor();
@@ -153,38 +147,6 @@ void    run_game(char *GAME)
 	return;
 }
 
-void 	display_error(char *ERROR)
-{
-	GtkDialogFlags flags = GTK_DIALOG_DESTROY_WITH_PARENT;
-	GtkWidget *dialog = gtk_message_dialog_new(NULL, flags, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE, "%s", ERROR);
-	gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(window));
-	gtk_window_set_title(GTK_WINDOW(dialog), "Error");
-	gtk_dialog_run(GTK_DIALOG(dialog));
-	gtk_widget_destroy (dialog);
-	return;
-}
-
-static void watch_game (GPid pid, gint status, gpointer user_data)
-{
-	char err_line[1024] = "";
-	g_autoptr(GError) game_error = NULL;
-	gint fd = GPOINTER_TO_INT(user_data);
-
-	sprintf(err_line, check_fd(fd));
-	if (strstr(err_line, "EOF") == NULL) display_error(err_line);
-
-	if (g_spawn_check_exit_status (status, &game_error) != TRUE ) {
-		display_error(game_error->message);
-	}
-	g_spawn_close_pid (pid);
-}
-
-void   on_fullscreen_toggled(GtkToggleButton *b) {
-	gboolean F = gtk_toggle_button_get_active(b);
-	if (F) sprintf(fs, "-fullscreen");
-	else sprintf(fs, NULL);
-}
-
 void	on_ambushalleylaunch_clicked(GtkButton *b) {
 	run_game(GAME_AMBUSH);
 }
@@ -203,12 +165,4 @@ void	on_popsghostlylaunch_clicked(GtkButton *b) {
 
 void	on_sonicfurylaunch_clicked(GtkButton *b) {
 	run_game(GAME_SONIC);
-}
-
-void	on_destroy() {
-	gtk_main_quit();
-}
-
-void	on_quit_clicked(GtkButton *b) {
-	on_destroy();
 }

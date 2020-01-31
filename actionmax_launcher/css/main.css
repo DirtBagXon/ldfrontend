@@ -1,0 +1,12 @@
+#quit_button{
+  color: #FFFFD5;
+  box-shadow: 5px 5px 4px #888888;
+  border-color: white;
+  background-color: white;
+  background: rgba(169,3,41,1);
+  background: radial-gradient(ellipse at center, rgba(169,3,41,1) 8%, rgba(169,3,41,1) 12%, rgba(143,2,34,1) 23%, rgba(13,2,0,1) 63%, rgba(13,2,0,1) 83%);
+}
+
+#shadow{
+  box-shadow: 5px 5px 4px #888888;
+}

@@ -2,6 +2,7 @@
 <gresources>
   <gresource prefix="daphne">
     <file preprocess="xml-stripblanks">daphne.glade</file>
+    <file>css/main.css</file>
     <file>images/ace.jpg</file>
     <file>images/astron.jpg</file>
     <file>images/badlands.jpg</file>

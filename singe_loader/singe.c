@@ -29,6 +29,7 @@
 #include <gtk/gtkx.h>
 #include <ctype.h>
 #include <sys/mman.h>
+#include "../common/util.h"
 #include "singe.h"
 
 GtkWidget	*window;
@@ -55,29 +56,9 @@ GtkWidget	*timegal;
 GtkWidget	*timetraveler;
 GtkWidget	*johnnyrock;
 
-static void watch_game(GPid pid, gint status, gpointer user_data);
-const char * check_fd(int fd);
-void	on_destroy();
 void	image_overlay();
 void	run_game(char *GAME);
-void	display_error(char *ERROR);
-char 	fs[16];
 char	game[32] = GAME_CRIME;
-
-const char * check_fd(int fd)
-{
-	char line[1024];
-	char buffer[1024];
-	char *s_ptr = line;
-	ssize_t nbytes = read(fd, buffer, sizeof(buffer));
-
-	if (nbytes <= 0) {
-		return "EOF";
-	} else {
-		sprintf(line, "%.*s\n", (int)nbytes - 1, buffer);
-		return s_ptr;
-	}
-}
 
 GtkWidget * init_tree()
 {
@@ -224,27 +205,15 @@ int main(int argc, char *argv[])
 	gtk_tree_view_set_activate_on_single_click(GTK_TREE_VIEW(list), TRUE);
 	g_signal_connect(list, "row-activated", G_CALLBACK(selected), &game);
 	gtk_container_add(GTK_CONTAINER(scroll), list);
+
+	loadResCSS("singe/css/main.css");
+	gtk_widget_set_name(start, "shadow");
 	
 	gtk_widget_show_all(window);
 
 	gtk_main();
 
 	return EXIT_SUCCESS;
-}
-
-void	on_destroy()
-{
-	gtk_main_quit();
-}
-
-void    on_logobutton_clicked(GtkButton *b)
-{
-	on_destroy();
-}
-
-void    on_start_clicked(GtkButton *b)
-{
-	run_game(game);
 }
 
 void	run_game(char *GAME)
@@ -281,37 +250,4 @@ void	run_game(char *GAME)
 	gpointer user_ptr = GINT_TO_POINTER(child_stderr);
 	g_child_watch_add(child_pid, watch_game, user_ptr);
 	return;
-}
-
-void	display_error(char *ERROR)
-{
-	GtkDialogFlags flags = GTK_DIALOG_DESTROY_WITH_PARENT;
-	GtkWidget *dialog = gtk_message_dialog_new(NULL, flags, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE, "%s", ERROR);
-	gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(window));
-	gtk_window_set_title(GTK_WINDOW(dialog), "Error");
-	gtk_dialog_run(GTK_DIALOG(dialog));
-	gtk_widget_destroy (dialog);
-	return;
-}
-
-static void watch_game (GPid pid, gint status, gpointer user_data)
-{
-	char err_line[1024] = "";
-	g_autoptr(GError) game_error = NULL;
-	gint fd = GPOINTER_TO_INT(user_data);
-
-	sprintf(err_line, check_fd(fd));
-	if (strstr(err_line, "EOF") == NULL) display_error(err_line);
-
-	if (g_spawn_check_exit_status (status, &game_error) != TRUE ) {
-		display_error(game_error->message);
-	}
-	g_spawn_close_pid (pid);
-}
-
-void	on_fullscreen_toggled(GtkToggleButton *b)
-{
-	gboolean F = gtk_toggle_button_get_active(b);
-	if (F) sprintf(fs, "-fullscreen");
-	else sprintf(fs, NULL);
 }
