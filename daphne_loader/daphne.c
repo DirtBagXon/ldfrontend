@@ -255,7 +255,7 @@ int main(int argc, char *argv[])
 	g_signal_connect(list, "row-activated", G_CALLBACK(selected), &game);
 	gtk_container_add(GTK_CONTAINER(scroll), list);
 
-	loadResCSS("daphne/css/main.css");
+	loadResCSS("/daphne/css/main.css");
 	gtk_widget_set_name(start, "shadow");
 	
 	gtk_widget_show_all(window);

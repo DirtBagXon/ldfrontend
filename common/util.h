@@ -20,7 +20,7 @@
 
 char	fs[16];
 void	on_destroy();
-void    loadResCSS(char *CSS);
+void	loadResCSS(char *CSS);
 void	display_error(char *ERROR);
 void	on_fullscreen_toggled(GtkToggleButton *b);
 void	watch_game(GPid pid, gint status, gpointer user_data);

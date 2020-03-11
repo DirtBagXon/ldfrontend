@@ -24,6 +24,7 @@
 
 #define		GAME_CRIME	"crimepatrol"
 #define		GAME_DRUG	"drugwars"
+#define		GAME_FREEDOM	"freedomfighter"
 #define		GAME_HAYATE	"hayate"
 #define		GAME_MADDOG	"maddog"
 #define		GAME_MADDOG2	"maddog2"
@@ -37,14 +38,15 @@
 
 
 #define		NAME_CRIME	"Crime Patrol"
-#define		NAME_DRUG	"Drug Wars"
+#define		NAME_DRUG	"Drug Wars: Crime Patrol II"
+#define		NAME_FREEDOM	"Freedom Fighter"
 #define		NAME_HAYATE	"Ninja Hayate"
 #define		NAME_MADDOG	"Mad Dog McCree"
-#define		NAME_MADDOG2	"Mad Dog II"
+#define		NAME_MADDOG2	"Mad Dog II: The Lost Gold"
 #define		NAME_LBH	"Last Bounty Hunter"
 #define		NAME_PLATOON	"Platoon"
 #define		NAME_PIRATES	"Space Pirates"
 #define		NAME_BLAZERS	"Star Blazers"
 #define		NAME_TIMEGAL	"Time Gal"
 #define		NAME_TIMETRAV	"Time Traveler"
-#define		NAME_JOHNNY	"Who Shot Johnny Rock"
+#define		NAME_JOHNNY	"Who Shot Johnny Rock?"

@@ -2,6 +2,7 @@ BUILD
 BETA
 PKGS
 /images
+*Resource.c
 actionmax_launcher/actionmaxlauncher
 daphne_loader/daphneloader
 singe_loader/singeloader

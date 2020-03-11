@@ -45,6 +45,7 @@ GtkWidget 	* init_tree();
 
 GtkWidget	*crimepatrol;
 GtkWidget	*drugwars;
+GtkWidget	*freedomfighter;
 GtkWidget	*hayate;
 GtkWidget	*maddog;
 GtkWidget	*maddog2;
@@ -69,6 +70,8 @@ GtkWidget * init_tree()
 	gtk_list_store_set(liststore, &treeiter, 0,NAME_CRIME , -1);
 	gtk_list_store_append(liststore, &treeiter);
 	gtk_list_store_set(liststore, &treeiter, 0, NAME_DRUG, -1);
+	gtk_list_store_append(liststore, &treeiter);
+	gtk_list_store_set(liststore, &treeiter, 0, NAME_FREEDOM, -1);
 	gtk_list_store_append(liststore, &treeiter);
 	gtk_list_store_set(liststore, &treeiter, 0, NAME_HAYATE, -1);
 	gtk_list_store_append(liststore, &treeiter);
@@ -111,6 +114,9 @@ static void selected(GtkTreeView *tree_view, GtkTreePath *path, GtkTreeViewColum
 	if (strcmp(string, NAME_DRUG) == 0) {
 		sprintf(game, GAME_DRUG);
 		graphic = drugwars;
+	} else if (strcmp(string, NAME_FREEDOM) == 0) {
+		sprintf(game, GAME_FREEDOM);
+		graphic = freedomfighter;
 	} else if (strcmp(string, NAME_HAYATE) == 0) {
 		sprintf(game, GAME_HAYATE);
 		graphic = hayate;
@@ -163,6 +169,7 @@ void	image_overlay()
 	maddog2 = gtk_image_new_from_resource("/singe/images/maddog2.jpg");
 	maddog = gtk_image_new_from_resource("/singe/images/maddog.jpg");
 	hayate = gtk_image_new_from_resource("/singe/images/hayate.jpg");
+	freedomfighter = gtk_image_new_from_resource("/singe/images/freedomfighter.jpg");
 	drugwars = gtk_image_new_from_resource("/singe/images/drugwars.jpg");
 	crimepatrol = gtk_image_new_from_resource("/singe/images/crimepatrol.jpg");
 
@@ -176,6 +183,7 @@ void	image_overlay()
 	gtk_overlay_add_overlay (GTK_OVERLAY (imageoverlay), maddog2);
 	gtk_overlay_add_overlay (GTK_OVERLAY (imageoverlay), maddog);
 	gtk_overlay_add_overlay (GTK_OVERLAY (imageoverlay), hayate);
+	gtk_overlay_add_overlay (GTK_OVERLAY (imageoverlay), freedomfighter);
 	gtk_overlay_add_overlay (GTK_OVERLAY (imageoverlay), drugwars);
 	gtk_overlay_add_overlay (GTK_OVERLAY (imageoverlay), crimepatrol);
 }
@@ -206,7 +214,7 @@ int main(int argc, char *argv[])
 	g_signal_connect(list, "row-activated", G_CALLBACK(selected), &game);
 	gtk_container_add(GTK_CONTAINER(scroll), list);
 
-	loadResCSS("singe/css/main.css");
+	loadResCSS("/singe/css/main.css");
 	gtk_widget_set_name(start, "shadow");
 	
 	gtk_widget_show_all(window);

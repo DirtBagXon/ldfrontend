@@ -91,7 +91,7 @@ int main(int argc, char *argv[]) {
 	gtk_window_set_resizable(GTK_WINDOW(window), FALSE);
 	g_signal_connect(window, "realize", G_CALLBACK(WindowRealize), NULL);
 
-	loadResCSS("actionmax/css/main.css");
+	loadResCSS("/actionmax/css/main.css");
 	gtk_widget_set_name(quit, "quit_button");
 	gtk_widget_set_name(ambushalleylaunch, "shadow");
 	gtk_widget_set_name(bluethunderlaunch, "shadow");
