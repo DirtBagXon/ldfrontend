@@ -128,8 +128,8 @@ void    run_game(char *GAME)
 	sprintf(rom, "%s", GAME);
 
 	if (strcmp(fs, "-fullscreen") != 0) {
-		sprintf(fs, GAME);
-		sprintf(rom, NULL);
+		sprintf(fs, "%s", GAME);
+		rom[0]='\0';
 	}
 
 	gchar * argv[] = { cmd, fs, rom, NULL };

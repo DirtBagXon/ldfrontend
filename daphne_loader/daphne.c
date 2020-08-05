@@ -257,6 +257,7 @@ int main(int argc, char *argv[])
 
 	loadResCSS("/daphne/css/main.css");
 	gtk_widget_set_name(start, "shadow");
+	gtk_widget_set_name(logobutton, "logo");
 	
 	gtk_widget_show_all(window);
 
@@ -282,8 +283,8 @@ void	run_game(char *GAME)
 	sprintf(rom, "%s", GAME);
 
 	if (strcmp(fs, "-fullscreen") != 0) {
-		sprintf(fs, GAME);
-		sprintf(rom, NULL);
+		sprintf(fs, "%s", GAME);
+		rom[0]='\0';
 	}
 
 	if (strcmp(fs, "-fullscreen") != 0 && strcmp(GAME, GAME_TQ) == 0) {

@@ -73,13 +73,13 @@ GtkWidget * init_tree()
 	gtk_list_store_append(liststore, &treeiter);
 	gtk_list_store_set(liststore, &treeiter, 0, NAME_FREEDOM, -1);
 	gtk_list_store_append(liststore, &treeiter);
-	gtk_list_store_set(liststore, &treeiter, 0, NAME_HAYATE, -1);
+	gtk_list_store_set(liststore, &treeiter, 0, NAME_LBH, -1);
 	gtk_list_store_append(liststore, &treeiter);
 	gtk_list_store_set(liststore, &treeiter, 0, NAME_MADDOG, -1);
 	gtk_list_store_append(liststore, &treeiter);
 	gtk_list_store_set(liststore, &treeiter, 0, NAME_MADDOG2, -1);
 	gtk_list_store_append(liststore, &treeiter);
-	gtk_list_store_set(liststore, &treeiter, 0, NAME_LBH, -1);
+	gtk_list_store_set(liststore, &treeiter, 0, NAME_HAYATE, -1);
 	gtk_list_store_append(liststore, &treeiter);
 	gtk_list_store_set(liststore, &treeiter, 0, NAME_PLATOON, -1);
 	gtk_list_store_append(liststore, &treeiter);
@@ -117,18 +117,18 @@ static void selected(GtkTreeView *tree_view, GtkTreePath *path, GtkTreeViewColum
 	} else if (strcmp(string, NAME_FREEDOM) == 0) {
 		sprintf(game, GAME_FREEDOM);
 		graphic = freedomfighter;
-	} else if (strcmp(string, NAME_HAYATE) == 0) {
-		sprintf(game, GAME_HAYATE);
-		graphic = hayate;
+	} else if (strcmp(string, NAME_LBH) == 0) {
+		sprintf(game, GAME_LBH);
+		graphic = lbh;
 	} else if (strcmp(string, NAME_MADDOG) == 0) {
 		sprintf(game, GAME_MADDOG);
 		graphic = maddog;
 	} else if (strcmp(string, NAME_MADDOG2) == 0) {
 		sprintf(game, GAME_MADDOG2);
 		graphic = maddog2;
-	} else if (strcmp(string, NAME_LBH) == 0) {
-		sprintf(game, GAME_LBH);
-		graphic = lbh;
+	} else if (strcmp(string, NAME_HAYATE) == 0) {
+		sprintf(game, GAME_HAYATE);
+		graphic = hayate;
 	} else if (strcmp(string, NAME_PLATOON) == 0) {
 		sprintf(game, GAME_PLATOON);
 		graphic = platoon;
@@ -165,10 +165,10 @@ void	image_overlay()
 	starblazers = gtk_image_new_from_resource("/singe/images/starblazers.jpg");
 	spacepirates = gtk_image_new_from_resource("/singe/images/spacepirates.jpg");
 	platoon = gtk_image_new_from_resource("/singe/images/platoon.jpg");
-	lbh = gtk_image_new_from_resource("/singe/images/lbh.jpg");
+	hayate = gtk_image_new_from_resource("/singe/images/hayate.jpg");
 	maddog2 = gtk_image_new_from_resource("/singe/images/maddog2.jpg");
 	maddog = gtk_image_new_from_resource("/singe/images/maddog.jpg");
-	hayate = gtk_image_new_from_resource("/singe/images/hayate.jpg");
+	lbh = gtk_image_new_from_resource("/singe/images/lbh.jpg");
 	freedomfighter = gtk_image_new_from_resource("/singe/images/freedomfighter.jpg");
 	drugwars = gtk_image_new_from_resource("/singe/images/drugwars.jpg");
 	crimepatrol = gtk_image_new_from_resource("/singe/images/crimepatrol.jpg");
@@ -179,10 +179,10 @@ void	image_overlay()
 	gtk_overlay_add_overlay (GTK_OVERLAY (imageoverlay), starblazers);
 	gtk_overlay_add_overlay (GTK_OVERLAY (imageoverlay), spacepirates);
 	gtk_overlay_add_overlay (GTK_OVERLAY (imageoverlay), platoon);
-	gtk_overlay_add_overlay (GTK_OVERLAY (imageoverlay), lbh);
+	gtk_overlay_add_overlay (GTK_OVERLAY (imageoverlay), hayate);
 	gtk_overlay_add_overlay (GTK_OVERLAY (imageoverlay), maddog2);
 	gtk_overlay_add_overlay (GTK_OVERLAY (imageoverlay), maddog);
-	gtk_overlay_add_overlay (GTK_OVERLAY (imageoverlay), hayate);
+	gtk_overlay_add_overlay (GTK_OVERLAY (imageoverlay), lbh);
 	gtk_overlay_add_overlay (GTK_OVERLAY (imageoverlay), freedomfighter);
 	gtk_overlay_add_overlay (GTK_OVERLAY (imageoverlay), drugwars);
 	gtk_overlay_add_overlay (GTK_OVERLAY (imageoverlay), crimepatrol);
@@ -216,6 +216,7 @@ int main(int argc, char *argv[])
 
 	loadResCSS("/singe/css/main.css");
 	gtk_widget_set_name(start, "shadow");
+	gtk_widget_set_name(logobutton, "logo");
 	
 	gtk_widget_show_all(window);
 
@@ -241,8 +242,8 @@ void	run_game(char *GAME)
 	sprintf(rom, "%s", GAME);
 
 	if (strcmp(fs, "-fullscreen") != 0) {
-		sprintf(fs, GAME);
-		sprintf(rom, NULL);
+		sprintf(fs, "%s", GAME);
+		rom[0]='\0';
 	}
 
 	gchar * argv[] = { cmd, fs, rom, NULL };
